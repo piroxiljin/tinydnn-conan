@@ -6,6 +6,7 @@ class SQLiteCppConan(ConanFile):
     version = "1.0.0a"
     url = "https://github.com/sunsided/tinydnn-conan"
     license = "BSD"
+    exports = "Findtiny-dnn.cmake"
 
     def source(self):
         #extension = "zip" if sys.platform == "win32" else "tar.gz" % self.FOLDER_NAME
@@ -30,6 +31,7 @@ class SQLiteCppConan(ConanFile):
         pass
 
     def package(self):
+        self.copy("Findtiny-dnn.cmake", ".", ".")
         self.copy("*.h",   dst="include/tiny_dnn", src="tiny-dnn/tiny_dnn", keep_path=True)
         self.copy("*.hpp", dst="include/tiny_dnn", src="tiny-dnn/tiny_dnn", keep_path=True)
         self.copy("*.h",   dst="include/cereal", src="tiny-dnn/cereal", keep_path=True)
